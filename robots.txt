@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tu-usuario.github.io/better-call-saul-site/sitemap.xml
+Sitemap: https://bettercallsaul-mgh.vercel.app/sitemap.xml
