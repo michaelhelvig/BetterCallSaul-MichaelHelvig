@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto — Better Call Saul Fan Site</title>
+  <meta name="description" content="Formulario de contacto del sitio de fans de Better Call Saul.">
+  <link rel="canonical" href="https://tu-usuario.github.io/better-call-saul-site/contacto.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Better Call Saul — Sitio de Fans">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:title" content="Contacto — Better Call Saul Fan Site">
+  <meta property="og:description" content="Formulario de contacto del sitio de fans de Better Call Saul.">
+  <meta property="og:image" content="https://tu-usuario.github.io/better-call-saul-site/imagenes/hero-fondo.jpg">
+  <meta property="og:url" content="https://tu-usuario.github.io/better-call-saul-site/contacto.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contacto — Better Call Saul Fan Site">
+  <meta name="twitter:description" content="Formulario de contacto del sitio de fans de Better Call Saul.">
+  <meta name="twitter:image" content="https://tu-usuario.github.io/better-call-saul-site/imagenes/hero-fondo.jpg">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23141414%22/><text x=%2250%22 y=%2268%22 font-size=%2260%22 text-anchor=%22middle%22 fill=%22%23f4c10f%22 font-family=%22Georgia%22>S</text></svg>">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://tu-usuario.github.io/better-call-saul-site/" },
+    { "@type": "ListItem", "position": 2, "name": "Contacto", "item": "https://tu-usuario.github.io/better-call-saul-site/contacto.html" }
+  ]
+}
+</script>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+  <a href="#contenido" class="saltar-enlace">Saltar al contenido</a>
+
+  <header class="encabezado">
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="index.html" class="marca" aria-label="Better Call Saul — Ir al inicio">
+        <img src="imagenes/logo-bcs.png" alt="Better Call Saul" width="320" height="172">
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+      </button>
+      <ul class="nav-lista">
+        <li><a href="index.html" class="nav-link">Inicio</a></li>
+        <li class="tiene-submenu">
+          <a href="temporadas.html" class="nav-link">Temporadas <span class="caret">▾</span></a>
+          <ul class="submenu">
+            <li><a href="temporadas.html#temporada-1">Temporada 1 <span class="n">01</span></a></li>
+            <li><a href="temporadas.html#temporada-2">Temporada 2 <span class="n">02</span></a></li>
+            <li><a href="temporadas.html#temporada-3">Temporada 3 <span class="n">03</span></a></li>
+            <li><a href="temporadas.html#temporada-4">Temporada 4 <span class="n">04</span></a></li>
+            <li><a href="temporadas.html#temporada-5">Temporada 5 <span class="n">05</span></a></li>
+            <li><a href="temporadas.html#temporada-6">Temporada 6 <span class="n">06</span></a></li>
+          </ul>
+        </li>
+        <li><a href="personajes.html" class="nav-link">Personajes</a></li>
+        <li><a href="galeria.html" class="nav-link">Galería</a></li>
+        <li><a href="easter-eggs.html" class="nav-link">Easter Eggs</a></li>
+        <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <section class="cabecera-pagina">
+      <div class="envoltura">
+        <p class="migas">INICIO / CONTACTO</p>
+        <span class="etiqueta">CONSULTA LEGAL</span>
+        <h1>Contacto</h1>
+        <p style="color:#dcd6ba; max-width:60ch;">
+          ¿Encontraste un error en el expediente, tenés una sugerencia o simplemente
+          querés dejar un comentario sobre la serie? Completá el formulario.
+        </p>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="envoltura contacto-grid">
+
+        <form class="formulario revelar" novalidate>
+          <div class="campo">
+            <label for="nombre">Nombre <span class="etiqueta"
+                style="transform:none; padding:.1em .5em; font-size:.65rem;">obligatorio</span></label>
+            <input type="text" id="nombre" name="nombre" autocomplete="name" required minlength="2">
+            <span class="error" data-para="nombre"></span>
+          </div>
+
+          <div class="campo">
+            <label for="email">Correo electrónico <span class="etiqueta"
+                style="transform:none; padding:.1em .5em; font-size:.65rem;">obligatorio</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+            <span class="error" data-para="email"></span>
+          </div>
+
+          <div class="campo">
+            <label for="asunto">Motivo de la consulta</label>
+            <select id="asunto" name="asunto" required>
+              <option value="" selected disabled>Elegí una opción...</option>
+              <option value="error">Reportar un error en el sitio</option>
+              <option value="sugerencia">Sugerencia de contenido</option>
+              <option value="trivia">Duda sobre algún dato de la serie</option>
+              <option value="otro">Otro</option>
+            </select>
+            <span class="error" data-para="asunto"></span>
+          </div>
+
+          <div class="campo">
+            <label for="mensaje">Mensaje <span class="etiqueta"
+                style="transform:none; padding:.1em .5em; font-size:.65rem;">mín. 10 caracteres</span></label>
+            <textarea id="mensaje" name="mensaje" required minlength="10"></textarea>
+            <span class="error" data-para="mensaje"></span>
+          </div>
+
+          <button type="submit" class="boton petroleo">Enviar expediente</button>
+          <div class="aviso-envio" role="status" aria-live="polite"></div>
+        </form>
+
+        <aside class="datos-contacto revelar">
+          <div class="tarjeta">
+            <span class="etiqueta">DATOS DE LA OFICINA</span>
+            <div class="datos-contacto" style="margin-top:1rem;">
+              <div class="fila"><span class="rotulo">OFICINA</span><span>Local de manicura, trastienda — Albuquerque, NM
+                  (referencia ficticia)</span></div>
+              <div class="fila"><span class="rotulo">TELÉFONO</span><span>1-800-JMM-LAW</div>
+              <div class="fila"><span class="rotulo">HORARIO</span><span>Lunes a viernes, "cuando el cartel lo
+                  permita"</span></div>
+              <div class="fila"><span class="rotulo">LEMA</span><span>"S'all good, man."</span></div>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie-pagina">
+    <div class="envoltura">
+      <div class="pie-grid">
+        <div>
+          <h4>BETTER CALL SAUL · FAN SITE</h4>
+          <p style="max-width:34ch; font-size:.88rem; color:#c9c3a6;">Proyecto académico sin fines de lucro, creado por
+            un fan.</p>
+        </div>
+        <div>
+          <h4>NAVEGACIÓN</h4>
+          <ul>
+            <li><a href="temporadas.html">Temporadas</a></li>
+            <li><a href="personajes.html">Personajes</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>MÁS</h4>
+          <ul>
+            <li><a href="easter-eggs.html">Easter Eggs</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pie-inferior">
+        <span>© <span data-anio></span> Fan Site — "It's all good, man."</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/base.js"></script>
+</body>
+
+</html>
