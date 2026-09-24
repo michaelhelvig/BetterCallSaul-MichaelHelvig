@@ -16,6 +16,7 @@
       const abierto = navToggle.getAttribute('aria-expanded') === 'true';
       navToggle.setAttribute('aria-expanded', String(!abierto));
       navLista.classList.toggle('abierta');
+      if (abierto) cerrarSubmenus();
     });
   }
 
@@ -33,19 +34,38 @@
   }
 
   /* ---------------------------------------------------------
-     2) Submenú desplegable "Temporadas" (funciona con click
-        en móvil/táctil y con :hover en escritorio vía CSS)
+     2) Submenú desplegable "Temporadas": solo se abre/cierra con
+        la flecha (botón .submenu-toggle). El texto "Temporadas"
+        es un link normal a temporadas.html.
   --------------------------------------------------------- */
-  document.querySelectorAll('.tiene-submenu > .nav-link').forEach((enlace) => {
-    enlace.addEventListener('click', (evento) => {
-      const esMovil = window.matchMedia('(max-width: 760px)').matches;
-      if (!esMovil) return; // en escritorio el hover del CSS ya lo maneja
-      evento.preventDefault();
-      const padre = enlace.parentElement;
-      const yaAbierto = padre.classList.contains('abierto');
-      document.querySelectorAll('.tiene-submenu.abierto').forEach((el) => el.classList.remove('abierto'));
-      padre.classList.toggle('abierto', !yaAbierto);
+  const cerrarSubmenus = () => {
+    document.querySelectorAll('.tiene-submenu.abierto').forEach((el) => {
+      el.classList.remove('abierto');
+      const b = el.querySelector('.submenu-toggle');
+      if (b) b.setAttribute('aria-expanded', 'false');
     });
+  };
+
+  document.querySelectorAll('.submenu-toggle').forEach((boton) => {
+    boton.addEventListener('click', () => {
+      const padre = boton.closest('.tiene-submenu');
+      const abrir = !padre.classList.contains('abierto');
+      cerrarSubmenus();
+      padre.classList.toggle('abierto', abrir);
+      boton.setAttribute('aria-expanded', String(abrir));
+    });
+  });
+
+  // Click/tap fuera del menú o tecla Escape: se cierra el submenú
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.tiene-submenu')) cerrarSubmenus();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const abierto = document.querySelector('.tiene-submenu.abierto .submenu-toggle');
+      cerrarSubmenus();
+      if (abierto) abierto.focus();
+    }
   });
 
   // Cierra el menú/submenú al elegir un enlace final
@@ -83,7 +103,10 @@
           observador.unobserve(entrada.target);
         }
       });
-    }, { threshold: 0.15 });
+      /* threshold 0 + margen inferior: se revela apenas el borde superior del bloque entra
+         en pantalla. Con un umbral porcentual (ej. 0.15) los bloques muy altos, como la grilla
+         de la galería en móvil, nunca alcanzaban ese porcentaje visible y quedaban invisibles. */
+    }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
     elementosRevelar.forEach((el) => observador.observe(el));
   } else {
     elementosRevelar.forEach((el) => el.classList.add('visible'));

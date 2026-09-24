@@ -21,7 +21,7 @@
   <meta name="twitter:description"
     content="Resumen de la Temporada 1 de Better Call Saul: Jimmy McGill, un abogado de oficio en Albuquerque que vive a la sombra de su hermano Chuck.">
   <meta name="twitter:image" content="https://bettercallsaul-mgh.vercel.app/imagenes/imagen1.jpg">
-  <link rel="icon" href="imagenes/favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.ico" sizes="any">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -50,8 +50,14 @@
       <ul class="nav-lista">
         <li><a href="index.html" class="nav-link">Inicio</a></li>
         <li class="tiene-submenu">
-          <a href="temporadas.html" class="nav-link">Temporadas <span class="caret">▾</span></a>
-          <ul class="submenu">
+          <a href="temporadas.html" class="nav-link">Temporadas</a>
+          <button type="button" class="submenu-toggle" aria-label="Mostrar las temporadas" aria-expanded="false"
+            aria-controls="submenu-temporadas"><svg class="caret" viewBox="0 0 12 8" width="14" height="10"
+              aria-hidden="true" focusable="false">
+              <path d="M1.5 1.5 6 6l4.5-4.5" fill="none" stroke="currentColor" stroke-width="2.4"
+                stroke-linecap="square" />
+            </svg></button>
+          <ul class="submenu" id="submenu-temporadas">
             <li><a href="temporada-1.html">Temporada 1 <span class="n">01</span></a></li>
             <li><a href="temporada-2.html">Temporada 2 <span class="n">02</span></a></li>
             <li><a href="temporada-3.html">Temporada 3 <span class="n">03</span></a></li>

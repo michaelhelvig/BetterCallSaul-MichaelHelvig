@@ -272,6 +272,14 @@ select:focus-visible {
   top: 19px;
 }
 
+.nav-toggle span::before,
+.nav-toggle span::after {
+  /* las rayitas son hijas del <span> central: deben ocupar todo su ancho
+     (con left/right: 10px quedaban de ancho 0 y no se veían) */
+  left: 0;
+  right: 0;
+}
+
 .nav-toggle span::before {
   top: -8px;
 }
@@ -351,8 +359,71 @@ select:focus-visible {
 }
 
 .caret {
-  font-size: .65em;
+  display: block;
   transition: transform .2s ease;
+}
+
+/* --- "Temporadas": el texto navega a temporadas.html y la flecha abre/cierra el submenú --- */
+.tiene-submenu {
+  display: flex;
+  align-items: stretch;
+}
+
+.tiene-submenu>.nav-link {
+  padding-right: .3rem;
+}
+
+/* el subrayado de "sección actual" termina justo donde termina la palabra */
+.tiene-submenu>.nav-link::after {
+  right: .3rem;
+}
+
+.submenu-toggle {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .55rem .55rem .55rem .15rem;
+  font: inherit;
+  cursor: pointer;
+  /* mismo color que las palabras del navbar, sin caja ni fondo */
+  color: var(--papel-alt);
+  background: none;
+  border: 0;
+  transition: color .2s ease;
+}
+
+.nav-lista>li.activa>.submenu-toggle {
+  color: var(--papel);
+}
+
+@media (hover: hover) {
+  .submenu-toggle:hover {
+    color: var(--mostaza);
+  }
+}
+
+.submenu-toggle:focus-visible {
+  color: var(--mostaza);
+}
+
+.submenu-toggle:focus-visible {
+  outline: 2px solid var(--mostaza);
+  outline-offset: -2px;
+}
+
+/* flecha chica y de trazo fino */
+.submenu-toggle .caret {
+  width: 9px;
+  height: 6px;
+}
+
+.submenu-toggle .caret path {
+  stroke-width: 1.7;
+}
+
+.tiene-submenu.abierto>.submenu-toggle .caret {
+  transform: rotate(180deg);
 }
 
 /* --- submenú desplegable (Temporadas) --- */
@@ -368,34 +439,14 @@ select:focus-visible {
   opacity: 0;
   visibility: hidden;
   transform: translateY(-8px);
-  /* al salir, espera un instante antes de ocultarse (tolera movimientos en diagonal) */
-  transition: opacity .2s ease .15s, transform .2s ease .15s, visibility .2s .15s;
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
   z-index: 50;
 }
 
-/* puente invisible que cubre el espacio entre el link y el menú para que no se cierre al bajar el mouse */
-.tiene-submenu>.submenu::before {
-  content: '';
-  position: absolute;
-  left: -3px;
-  right: -3px;
-  top: -16px;
-  height: 16px;
-}
-
-.tiene-submenu:hover>.submenu,
-.tiene-submenu:focus-within>.submenu,
 .tiene-submenu.abierto>.submenu {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
-  transition-delay: 0s;
-}
-
-.tiene-submenu:hover>.nav-link .caret,
-.tiene-submenu:focus-within>.nav-link .caret,
-.tiene-submenu.abierto>.nav-link .caret {
-  transform: rotate(180deg);
 }
 
 .submenu li+li {
@@ -1729,8 +1780,28 @@ select:focus-visible {
     display: block;
   }
 
-  .tiene-submenu>.submenu::before {
-    display: none;
+  .tiene-submenu {
+    flex-wrap: wrap;
+  }
+
+  .tiene-submenu>.nav-link {
+    flex: 1 1 0;
+    width: auto;
+    min-width: 0;
+  }
+
+  .tiene-submenu>.nav-link {
+    padding-right: .8rem;
+  }
+
+  .submenu-toggle {
+    flex: 0 0 3.6rem;
+    padding: 0;
+    border-bottom: 1px dashed rgba(242, 236, 217, .15);
+  }
+
+  .tiene-submenu>.submenu {
+    flex: 0 0 100%;
   }
 
   .pie-grid {
